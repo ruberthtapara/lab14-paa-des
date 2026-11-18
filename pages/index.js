@@ -1,5 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const DynamicComponent = dynamic(() => import("../components/LargeComponent"), {
+  ssr: false,
+  loading: () => <p style={{ color: "#666", marginTop: "1rem" }}>Cargando componente con Lazy Loading...</p>,
+});
 
 export default function Home() {
   return (
@@ -17,10 +23,10 @@ export default function Home() {
       <main style={{ padding: "2rem", fontFamily: "sans-serif", maxWidth: "900px", margin: "0 auto" }}>
         <h1 style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>Bienvenido a mi página optimizada</h1>
         <p style={{ fontSize: "1.1rem", color: "#555", marginBottom: "1.5rem" }}>
-          Aprende cómo mejorar el rendimiento y SEO en Next.js con optimización de imágenes.
+          Aprende cómo mejorar el rendimiento y SEO en Next.js.
         </p>
 
-        <div style={{ borderRadius: "8px", overflow: "hidden", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
+        <div style={{ borderRadius: "8px", overflow: "hidden", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", marginBottom: "1.5rem" }}>
           <Image
             src="/images/seo-image.png"
             width={800}
@@ -30,6 +36,9 @@ export default function Home() {
             style={{ width: "100%", height: "auto", display: "block" }}
           />
         </div>
+
+        {/* Componente cargado dinámicamente con Lazy Loading */}
+        <DynamicComponent />
       </main>
     </>
   );
