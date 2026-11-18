@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Sitemap: https://lab14-paa-des.onrender.com/sitemap.xml
 Sitemap: https://lab14-paa-des.onrender.com/api/sitemap
